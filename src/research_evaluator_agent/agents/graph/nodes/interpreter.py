@@ -41,7 +41,12 @@ def interpreter(state: State):
             "content": f"expectation: {state.user_intent}",
         },
     ]
-    shared_context = llm_with_output.invoke(messages)
-    logger.info(f"interpreter response: {shared_context}")
-    return {"shared_context": shared_context,
+    try:
+        shared_context = llm_with_output.invoke(messages)
+        assert isinstance(shared_context, SharedContext)
+        logger.info(f"interpreter response: {shared_context}")
+    except Exception as e:
+        logger.error(f"interpreter error: {e}")
+        shared_context = SharedContext()
+    return {"shared_context": shared_context.model_dump(),
             "metrics": state.metrics}

@@ -38,8 +38,9 @@ def combine_metrics(state: State) -> OutputState:
     )
 
     metric_weights = {m.metric_name: m.weight for m in metric_weights_list}
-    logger.info(f"metric weights: {metric_weights}")
     metric_scores = {i.metric_name: i.score for i in state.metric_scores}
+    logger.info(f"metric score len {len(metric_scores)}. weights: {metric_weights}")
+
     # TODO: combine metrics based on user requirements.
     overall = combine_scores(metric_weights, metric_scores) if metric_scores else 0.0
     messages = [
@@ -61,4 +62,5 @@ def combine_metrics(state: State) -> OutputState:
     except Exception as e:
         logger.error(f"Failed to parse JSON response: {e}")
         summary = ""
-    return OutputState(overall_score=overall, overall_comment=summary)
+    return OutputState(overall_score=overall,
+                       overall_comment=summary)

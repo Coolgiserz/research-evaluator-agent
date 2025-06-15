@@ -12,8 +12,8 @@ class SharedContext(BaseModel):
 
     language: Optional[str] = None  # e.g. "zh" / "en"
     format: Optional[str] = None    # e.g. "table", "bullet"
-    focus: List[str] = []           # aspects to focus on
-    avoid: List[str] = []           # aspects to avoid
+    focus: Optional[List[str]] = Field(default_factory=list)           # aspects to focus on
+    avoid: List[str] = Field(default_factory=list)             # aspects to avoid
 
 class MetricScoreResult(BaseModel):
     """Structured result from MetricEvaluator."""
@@ -38,3 +38,4 @@ class OutputState(BaseModel):
     """Output state for the agent system."""
     overall_score: float = 0.0
     overall_comment: str = ""
+    metric_scores: Annotated[List[MetricScoreResult], operator.add] = None
