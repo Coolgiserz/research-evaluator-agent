@@ -31,7 +31,9 @@ def metric_evaluator(state: State, *, metric: str, **_: Any):  # noqa: D401
         },
         {
             "role": "user",
-            "content": f"""user_intent:{state.shared_context}\narticle: {state.input_content}"""
+            "content": f"""user_intent:{state.user_intent}\n
+                            shared_context:{state.shared_context}\n  
+                            article: {state.input_content}"""
         }
     ]
     try:

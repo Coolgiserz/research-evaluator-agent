@@ -4,6 +4,7 @@ import asyncio
 from typing import List, Optional, Dict
 from .graph.builder import build_graph
 from .graph.types import State, MetricVars
+from ..config.metrics import DEFAULT_METRICS
 class MasterAgent:
     """协调多个 PromptEvaluator，并聚合分数。
 
@@ -26,14 +27,14 @@ class MasterAgent:
         metrics: Optional[List[str]] = None,
     ) -> Dict:
         if metrics is None:
-            metrics = ["breadth", "depth", "relevance", "novelty", "factuality"]
+            metrics = DEFAULT_METRICS
         metric_vars = [MetricVars(metric_name=m) for m in metrics]
         initial_state = State(
             metrics=metric_vars,
             user_intent=context,
-            input_content=text,
+            input_content=text
         )
-        # 计算综合得分（加权平均）
+        # 计算综合得分（default 加权平均）
         response = await self._graph.ainvoke(initial_state)
 
         return response

@@ -22,8 +22,6 @@ class EvaluateRequest(BaseModel):
 class EvaluateResponse(BaseModel):
     """评分结果统一输出"""
 
-    scores: Dict[str, int] = Field(..., description="各指标得分，区间 [1,5]")
+    metric_scores: List = Field(..., description="各指标得分，区间 [1,5]")
     overall_score: float = Field(..., description="综合得分")
-    details: Optional[Dict[str, Any]] = Field(
-        None, description="调试或可视化所需的额外原始数据"
-    ) 
+    overall_comment: str = Field(..., description="整体评价")

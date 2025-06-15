@@ -8,7 +8,8 @@ __version__ = "0.1.0"
 from fastapi import FastAPI, HTTPException, Depends, status
 from research_evaluator_agent.models.schemas import EvaluateRequest, EvaluateResponse
 from research_evaluator_agent.agents.master import MasterAgent
-
+from research_evaluator_agent.utils.logging import get_logger
+logger = get_logger(__name__)
 
 # Dependency -----------------------------------------------------------------
 
@@ -45,7 +46,10 @@ async def evaluate(  # noqa: D401  # type: ignore
             context=request.context,
             metrics=request.metrics
         )
+        logger.info(f"evaluate result: {result}")
     except Exception as exc:  # pragma: no cover
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
 
-    return EvaluateResponse(**result)
+    return EvaluateResponse(metric_scores=result.get("metric_scores", []),
+                            overall_score=result.get("overall_score", 0.0),
+                            overall_comment=result.get("overall_comment", ""))
