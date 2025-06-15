@@ -1,0 +1,25 @@
+llm:
+  basic:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
+  reason:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
+metrics:
+  breadth:
+    template: prompts/breadth.md
+    weight: 0.20
+  depth:
+    template: prompts/depth.md
+    weight: 0.20
+  relevance:
+    template: prompts/relevance.md
+    weight: 0.25
+  novelty:
+    template: prompts/novelty.md
+    weight: 0.10
+  factuality:
+    template: prompts/factuality.md
+    weight: 0.25

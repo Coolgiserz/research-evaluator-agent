@@ -1,0 +1,9 @@
+{
+  "dockerfile_lines": [],
+  "graphs": {
+    "research-evaluator-agent": "./workflow.py:graph"
+  },
+  "python_version": "3.12",
+  "env": "./.env",
+  "dependencies": ["."]
+}
