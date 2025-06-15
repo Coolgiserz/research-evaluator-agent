@@ -104,61 +104,12 @@ Score = w_b·s_{breadth} + w_d·s_{depth} + w_r·s_{relevance} + w_n·s_{novelty
 Score = ∏_{i}(s_i^{w_i})
 ```
 
-## 项目目录结构
-
-├── README.md                    # 英文文档
-├── README_zh.md                 # 中文文档
-├── pyproject.toml               # Poetry/UV 元数据，已列出依赖
-├── uv.lock                      # 锁文件
-├── docker/
-│   └── Dockerfile               # 生产镜像，使用 uvicorn 多进程启动
-├── config/
-│   └── default.yaml             # 指标权重、LLM provider 等运行时配置
-├── prompts/                     # Prompt 模板（Jinja2 或纯文本）
-│   ├── breadth.tpl
-│   ├── depth.tpl
-│   ├── relevance.tpl
-│   ├── novelty.tpl
-│   └── factuality.tpl
-├── src/
-│   └── research_evaluator_agent/
-│       ├── __init__.py          # 对外导出 evaluate_article、version
-│       ├── cli/
-│       │   └── main.py          # `revaluator` 命令注册入口
-│       ├── api/                 # RESTful API
-│       │   ├── __init__.py
-│       │   └── fast.py          # FastAPI 实例与路由
-│       ├── agents/
-│       │   ├── base.py          # BaseAgent（Langgraph Node 封装）
-│       │   ├── prompt_eval.py   # PromptEvaluator（单指标）
-│       │   ├── master.py        # MasterAgent（Langgraph Graph 构建）
-│       │   └── aggregator.py    # ReportAggregator
-│       ├── llm/
-│       │   ├── __init__.py
-│       │   ├── factory.py       # ProviderFactory 读取配置实例化 Wrapper
-│       │   └── openai.py        # OpenAIWrapper 具体实现
-│       ├── models/
-│       │   ├── schemas.py       # Pydantic 请求/响应 & 域模型
-│       │   └── enums.py         # 枚举类型（MetricEnum 等）
-│       ├── utils/
-│       │   ├── scoring.py       # `combine_scores(weights, scores, mode)`
-│       │   ├── file.py          # 加载 prompt、配置等辅助函数
-│       │   └── logging.py
-│       └── settings.py          # 全局设置（环境变量、路径）
-├── tests/
-│   ├── test_master_agent.py
-│   ├── test_prompt_eval.py
-│   └── test_api.py
-└── .github/
-    └── workflows/ci.yml         # 单元测试 + lint + docker build
-
-
 ## 贡献指南
 请阅读 `CONTRIBUTING.md` 了解贡献流程。
 
 ## 路线图
 - v0.1: 核心提示词评估指标、Web API。
-- 
+- v0.2: 自定义核心提示词评估指标。
 - v0.3: 指标自定义、自定义指标、Web 界面、Docker 镜像。
 
 ## 许可证
