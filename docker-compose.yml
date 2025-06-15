@@ -1,0 +1,17 @@
+services:
+  research-evaluator-agent:
+    build: .
+    container_name: research-evaluator-agent
+    env_file:
+      - .env
+    ports:
+      - "8077:8000"
+    volumes:
+      - .:/app:cached
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8077/healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s 

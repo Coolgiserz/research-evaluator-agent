@@ -45,6 +45,8 @@ class MasterAgent:
         context: Optional[str] = None,
         metrics: Optional[List[str]] = None,
     ) -> Dict:
+        if metrics is None:
+            metrics = DEFAULT_METRICS
         metric_vars = [MetricVars(metric_name=m) for m in metrics]
         initial_state = State(
             metrics=metric_vars,
