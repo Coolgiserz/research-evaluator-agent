@@ -51,15 +51,35 @@ uv sync
    cp conf.yaml.sample conf.yaml
    ```
 2. Edit `conf.yaml` and set your values:
-   ```yaml
-   openai_api_key: "YOUR_API_KEY"
-   model: "gpt-4"
-   metrics:
-     - breadth
-     - depth
-     - relevance
-     - novelty
-   ```
+
+```yaml
+llm:
+  basic:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
+  reason:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
+metrics:
+  breadth:
+    template: prompts/breadth.tpl
+    weight: 0.20
+  depth:
+    template: prompts/depth.tpl
+    weight: 0.20
+  relevance:
+    template: prompts/relevance.tpl
+    weight: 0.25
+  novelty:
+    template: prompts/novelty.tpl
+    weight: 0.10
+  factuality:
+    template: prompts/factuality.tpl
+    weight: 0.25
+```
+
 3. (Optional) Create a `.env` file:
    ```bash
    cp env.sample .env
