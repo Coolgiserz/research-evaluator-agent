@@ -3,14 +3,13 @@
 # @Function:
 import operator
 from typing import List, Dict, Optional, Annotated
-from langgraph.graph import MessagesState, add_messages
+from langgraph.graph import  add_messages
 from pydantic import BaseModel, Field
 from langchain_core.messages import AnyMessage
 from src.research_evaluator_agent.prompts.vars import MetricVars
 class SharedContext(BaseModel):
     """Structured user intent parsed by IntentInterpreter."""
 
-    language: Optional[str] = None  # e.g. "zh" / "en"
     format: Optional[str] = None    # e.g. "table", "bullet"
     focus: Optional[List[str]] = Field(default_factory=list)           # aspects to focus on
     avoid: List[str] = Field(default_factory=list)             # aspects to avoid

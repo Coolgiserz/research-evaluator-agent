@@ -16,8 +16,7 @@ __all__ = [
 @dataclass
 class BaseVars:
     """Common variables shared by most templates."""
-
-    language: str = "zh"
+    language: str = "zh-US"
     current_time: str = field(default_factory=lambda: datetime.now().isoformat())
 
     def to_dict(self) -> Dict[str, Any]:

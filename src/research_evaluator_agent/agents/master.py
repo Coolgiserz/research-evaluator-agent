@@ -25,14 +25,16 @@ class MasterAgent:
         text: str,
         context: Optional[str] = None,
         metrics: Optional[List[str]] = None,
+        locale: Optional[str] = "en-US",
     ) -> Dict:
         if metrics is None:
             metrics = DEFAULT_METRICS
-        metric_vars = [MetricVars(metric_name=m) for m in metrics]
+        metric_vars = [MetricVars(metric_name=m, language=locale) for m in metrics]
         initial_state = State(
             metrics=metric_vars,
             user_intent=context,
-            input_content=text
+            input_content=text,
+            locale=locale
         )
         # 计算综合得分（default 加权平均）
         response = await self._graph.ainvoke(initial_state)

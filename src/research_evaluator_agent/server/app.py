@@ -78,7 +78,8 @@ async def evaluate(  # noqa: D401  # type: ignore
             metrics=request.metrics
         )
         logger.info(f"evaluate result: {result}")
-    except Exception as exc:  # pragma: no cover
+    except Exception as exc:
+        logger.error(exc)# pragma: no cover
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
 
     return EvaluateResponse(metric_scores=result.get("metric_scores", []),
