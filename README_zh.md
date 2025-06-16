@@ -66,8 +66,14 @@ curl -X POST http://localhost:8000/evaluate \
 `config/default.yaml`:
 ```yaml
 llm:
-  provider: openai
-  api_key: YOUR_API_KEY
+  basic:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
+  reason:
+    model: "doubao-1-5-pro-32k-250115"
+    api_key: xxxx
+    base_url: xxx
 metrics:
   breadth:
     template: prompts/breadth.tpl
