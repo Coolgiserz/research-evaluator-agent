@@ -40,19 +40,17 @@ format:
 	uv run black .
 
 build:
-	docker build -t $(IMAGE_NAME):$(TAG) .
-
-docker-build:
-	docker-compose build
+	docker build --platform linux/amd64 -t $(IMAGE_NAME):$(TAG) .
 
 docker-up:
-	docker-compose up -d --build
+	docker compose up -d --build
 
 docker-down:
-	docker-compose down
+	docker compose down
 
 docker-logs:
-	docker-compose logs -f
+	docker compose logs -f
+
 
 clean:
 	@find . -type f -name "*.py[co]" -delete || true

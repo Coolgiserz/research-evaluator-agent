@@ -2,11 +2,14 @@
 # @Time: 2025/6/14
 # @Function:
 import operator
-from typing import List, Dict, Optional, Annotated
-from langgraph.graph import  add_messages
-from pydantic import BaseModel, Field
+from typing import Annotated, Dict, List, Optional
 from langchain_core.messages import AnyMessage
+from langgraph.graph import add_messages
+from pydantic import BaseModel, Field
+
 from src.research_evaluator_agent.prompts.vars import MetricVars
+
+
 class SharedContext(BaseModel):
     """Structured user intent parsed by IntentInterpreter."""
 

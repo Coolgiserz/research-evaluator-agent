@@ -5,10 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List
 
-from langgraph.graph import StateGraph, START, END
-from .types import State, OutputState
-from .nodes import interpreter, metric_evaluator, combine_metrics
+from langgraph.graph import END, START, StateGraph
+
 from src.research_evaluator_agent.utils.file import load_yaml
+
+from .nodes import combine_metrics, interpreter, metric_evaluator
+from .types import OutputState, State
 
 
 def _load_metric_order(config_path: str | Path = "conf.yaml") -> List[str]:

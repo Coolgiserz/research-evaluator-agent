@@ -3,11 +3,15 @@
 from __future__ import annotations
 
 from typing import Any, Iterable
+
 from langgraph.prebuilt import create_react_agent
-from src.research_evaluator_agent.llms.factory import get_llm
+
 from src.research_evaluator_agent.config.agents import AgentType
+from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.prompts.template import apply_template
-from src.research_evaluator_agent.prompts.vars import MetricVars, InterpreterVars
+from src.research_evaluator_agent.prompts.vars import (InterpreterVars,
+                                                       MetricVars)
+
 __all__ = ["create_agent"]
 
 

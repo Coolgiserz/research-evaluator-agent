@@ -1,7 +1,8 @@
 import os
 from datetime import datetime
-from jinja2 import Environment, FileSystemLoader
 from typing import Any, Mapping
+
+from jinja2 import Environment, FileSystemLoader
 
 # allow dataclass based vars
 from .vars import vars_to_dict

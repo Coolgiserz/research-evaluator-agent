@@ -1,16 +1,22 @@
 """Combine metric results from state into overall score placeholder."""
 
 from __future__ import annotations
-from .metric_evaluator import logger
-from ..types import State, OutputState
-from langchain_core.tools import tool
+
 from typing import Annotated
-from src.research_evaluator_agent.utils.scoring import combine_scores
+
+from langchain_core.tools import tool
+
 from src.research_evaluator_agent.agents.agents import create_agent
-from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.config.agents import AgentType
+from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.prompts.template import apply_template
 from src.research_evaluator_agent.utils.json_utils import json_repair
+from src.research_evaluator_agent.utils.scoring import combine_scores
+
+from ..types import OutputState, State
+from .metric_evaluator import logger
+
+
 @tool
 def combine_score_helper(
  weights: Annotated[dict, "A dictionary of metric names and their corresponding weights."],

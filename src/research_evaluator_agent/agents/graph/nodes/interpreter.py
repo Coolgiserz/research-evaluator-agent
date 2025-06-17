@@ -1,11 +1,13 @@
-from ..types import State
-from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.agents.graph.types import SharedContext
+from src.research_evaluator_agent.config.metrics import DEFAULT_METRICS
+from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.prompts.template import apply_template
-from src.research_evaluator_agent.prompts.vars import  InterpreterVars, MetricVars
-from src.research_evaluator_agent.config.metrics import  DEFAULT_METRICS
+from src.research_evaluator_agent.prompts.vars import (InterpreterVars,
+                                                       MetricVars)
+from src.research_evaluator_agent.utils.logging import get_logger
 
-from src.research_evaluator_agent.utils.logging import  get_logger
+from ..types import State
+
 logger = get_logger(__name__)
 def interpreter(state: State):
     """

@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 from typing import Any
-from ..types import State, MetricScoreResult
+
 from src.research_evaluator_agent.llms.factory import get_llm
 from src.research_evaluator_agent.prompts.template import apply_template
-from src.research_evaluator_agent.prompts.vars import  MetricVars
-from src.research_evaluator_agent.utils.logging import  get_logger
+from src.research_evaluator_agent.prompts.vars import MetricVars
+from src.research_evaluator_agent.utils.logging import get_logger
+
+from ..types import MetricScoreResult, State
+
 logger = get_logger(__name__)
 def metric_evaluator(state: State, *, metric: str, **_: Any):  # noqa: D401
     """Handle evaluation for a single metric.

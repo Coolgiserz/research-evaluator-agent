@@ -1,8 +1,10 @@
-import pytest
 from datetime import datetime
 
+import pytest
+
 from research_evaluator_agent.prompts.template import apply_template
-from research_evaluator_agent.prompts.vars import MetricVars, CustomMetricVars, InterpreterVars
+from research_evaluator_agent.prompts.vars import (CustomMetricVars,
+                                                   InterpreterVars, MetricVars)
 
 
 def test_apply_template_with_dataclass():

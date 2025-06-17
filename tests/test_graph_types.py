@@ -1,7 +1,9 @@
 import pytest
 from pydantic import ValidationError
 
-from research_evaluator_agent.agents.graph.types import SharedContext, MetricScoreResult, State, OutputState
+from research_evaluator_agent.agents.graph.types import (MetricScoreResult,
+                                                         OutputState,
+                                                         SharedContext, State)
 from research_evaluator_agent.prompts.vars import MetricVars
 
 
