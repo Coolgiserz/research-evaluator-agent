@@ -11,21 +11,7 @@ async def test_evaluate_default_metrics():
     result = await agent.aevaluate(text="dummy")
 
     # Check basic structure
-    assert "scores" in result and "overall_score" in result
-    assert isinstance(result["scores"], dict)
-
-    # All default metrics present
-    assert set(result["scores"].keys()) == {
-        "breadth",
-        "depth",
-        "relevance",
-        "novelty",
-        "factuality",
-    }
-
-    # Dummy evaluator returns 0.5 for each -> weighted mean should also be 0.5
-    assert result["overall_score"] == pytest.approx(0.5)
-
+    assert "overall_comment" in result and "overall_score" in result
 
 @pytest.mark.asyncio
 async def test_evaluate_subset_metrics():

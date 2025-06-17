@@ -1,9 +1,11 @@
-import pytest
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+import pytest
 
 from research_evaluator_agent.prompts.template import apply_template
-from research_evaluator_agent.prompts.vars import MetricVars, CustomMetricVars, InterpreterVars
+from research_evaluator_agent.prompts.vars import (CustomMetricVars,
+                                                   InterpreterVars, MetricVars)
 
 PROMPT_DIR = Path("../src/research_evaluator_agent/prompts")
 

@@ -1,4 +1,4 @@
-from research_evaluator_agent.utils.scoring import combine_scores, CombineMode
+from research_evaluator_agent.utils.scoring import CombineMode, combine_scores
 
 
 def test_weighted_mean():

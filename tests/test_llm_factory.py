@@ -18,7 +18,9 @@ def conf_file(tmp_path_factory):
         }
     }
     p = tmp_path_factory.mktemp("cfg") / "conf.yaml"
-    import yaml, json
+    import json
+
+    import yaml
     with p.open("w", encoding="utf-8") as f:
         yaml.safe_dump(cfg, f)
     return p

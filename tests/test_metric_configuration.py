@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from research_evaluator_agent.config.metrics import MetricConfiguration, MetricInfo
-
+from research_evaluator_agent.config.metrics import (MetricConfiguration,
+                                                     MetricInfo)
 
 SAMPLE_CONF = Path("conf.yaml.sample")
 

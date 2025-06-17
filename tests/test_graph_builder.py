@@ -1,6 +1,7 @@
 import pytest
 
-from src.research_evaluator_agent.agents.graph.builder import _load_metric_order, build_graph, State
+from src.research_evaluator_agent.agents.graph.builder import (
+    State, _load_metric_order, build_graph)
 from src.research_evaluator_agent.config.metrics import MetricConfiguration
 from src.research_evaluator_agent.prompts.vars import MetricVars
 
