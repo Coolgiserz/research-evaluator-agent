@@ -1,6 +1,6 @@
 """Research-Evaluator-Agent top-level package."""
 
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 
 from research_evaluator_agent.agents.master import MasterAgent
 

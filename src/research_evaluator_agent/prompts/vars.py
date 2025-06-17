@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict, field
+from dataclasses import asdict, dataclass, field
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 __all__ = [
     "BaseVars",

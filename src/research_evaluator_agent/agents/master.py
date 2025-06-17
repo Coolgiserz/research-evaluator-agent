@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import asyncio
-from typing import List, Optional, Dict
-from .graph.builder import build_graph
-from .graph.types import State, MetricVars
+from typing import Dict, List, Optional
+
 from ..config.metrics import DEFAULT_METRICS
+from .graph.builder import build_graph
+from .graph.types import MetricVars, State
+
+
 class MasterAgent:
     """协调多个 PromptEvaluator，并聚合分数。
 
@@ -23,7 +26,7 @@ class MasterAgent:
     async def aevaluate(
         self,
         text: str,
-        context: Optional[str] = None,
+        context: Optional[str] = "",
         metrics: Optional[List[str]] = None,
         locale: Optional[str] = "en-US",
     ) -> Dict:
