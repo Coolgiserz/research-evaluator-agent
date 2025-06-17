@@ -1,0 +1,17 @@
+.venv/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.bak
+*.tmp
+*.tmp.*
+.gitignore
+.idea/
+.git/
+.langgraph_api
