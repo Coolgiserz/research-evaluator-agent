@@ -8,8 +8,6 @@ services:
       - .env
     ports:
       - "8077:8000"
-    volumes:
-      - .:/app
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8077/healthcheck"]
