@@ -51,6 +51,7 @@ docker-down:
 docker-logs:
 	docker compose logs -f
 
+
 clean:
 	@find . -type f -name "*.py[co]" -delete || true
 	@find . -type d -name "__pycache__" -exec rm -rf {} + || true

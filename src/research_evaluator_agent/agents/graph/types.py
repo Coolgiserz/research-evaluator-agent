@@ -3,7 +3,6 @@
 # @Function:
 import operator
 from typing import Annotated, Dict, List, Optional
-
 from langchain_core.messages import AnyMessage
 from langgraph.graph import add_messages
 from pydantic import BaseModel, Field

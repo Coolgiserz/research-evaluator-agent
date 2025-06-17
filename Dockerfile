@@ -10,6 +10,7 @@ ENV UV_PYPI_INDEX_URL=https://mirrors.aliyun.com/pypi/simple
 ENV UV_HTTP_TIMEOUT=300
 # Upgrade pip and install uv dependency manager
 RUN pip install -i https://mirrors.aliyun.com/pypi/simple --upgrade pip \
+
     && pip install -i https://mirrors.aliyun.com/pypi/simple uv && uv sync
 
 # Copy project source
