@@ -1,0 +1,1 @@
+.venv/bin/uvicorn src.research_evaluator_agent.server.app:app
