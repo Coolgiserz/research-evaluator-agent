@@ -120,14 +120,39 @@ print(result)
      -d '{"text": "Article content to evaluate."}'
    ```
    **Response**:
-   ```json
-   {
-     "breadth": 4.5,
-     "depth": 4.0,
-     "relevance": 4.8,
-     "novelty": 4.2
-   }
-   ```
+```json
+{
+  "metric_scores": [
+    {
+      "metric_name": "breadth",
+      "score": 1,
+      "comment": "文章仅提到'智能体'，与用户意图'乾坤大挪移'完全无关，未覆盖任何相关武功、招式或原理的内容。"
+    },
+    {
+      "metric_name": "depth",
+      "score": 1,
+      "comment": "文章仅提到'智能体'，与'乾坤大挪移'的武功、招式和原理完全无关，缺乏任何相关描述或解释。"
+    },
+    {
+      "metric_name": "factuality",
+      "score": 1,
+      "comment": "文章内容与'乾坤大挪移'无关，未提及任何相关武功、招式或原理，属于严重偏离主题的错误。"
+    },
+    {
+      "metric_name": "novelty",
+      "score": 1,
+      "comment": "文章内容与用户意图和共享上下文无关，未涉及武功、招式或原理，仅提到'智能体'，缺乏相关性与新颖性。"
+    },
+    {
+      "metric_name": "relevance",
+      "score": 1,
+      "comment": "文章内容与'乾坤大挪移'这一武功招式完全无关，未涉及任何相关主题。"
+    }
+  ],
+  "overall_score": 1,
+  "overall_comment": "该研究在覆盖面、深度、相关性、新颖性与事实性方面表现均不佳。各方面得分极低，缺乏对研究内容的广泛覆盖和深入探讨，创新性不足且可能存在事实问题。"
+}
+```
 
 ## Testing
 

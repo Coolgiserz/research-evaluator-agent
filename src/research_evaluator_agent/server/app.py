@@ -4,14 +4,21 @@ This file supersedes the previous `api.fast` module, aligning with the
 `server/` package naming convention.
 """
 __version__ = "0.1.0"
+import sys
+from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Depends, status, Request
-from research_evaluator_agent.models.schemas import EvaluateRequest, EvaluateResponse
-from research_evaluator_agent.agents.master import MasterAgent
-from research_evaluator_agent.utils.logging import get_logger
+sys.path.append(str(Path(__file__).parent.parent.parent))
+import time
+
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
-import time
+
+from research_evaluator_agent.agents.master import MasterAgent
+from research_evaluator_agent.models.schemas import (EvaluateRequest,
+                                                     EvaluateResponse)
+from research_evaluator_agent.utils.logging import get_logger
+
 logger = get_logger(__name__)
 
 
@@ -78,7 +85,8 @@ async def evaluate(  # noqa: D401  # type: ignore
             metrics=request.metrics
         )
         logger.info(f"evaluate result: {result}")
-    except Exception as exc:  # pragma: no cover
+    except Exception as exc:
+        logger.error(exc)# pragma: no cover
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)) from exc
 
     return EvaluateResponse(metric_scores=result.get("metric_scores", []),
